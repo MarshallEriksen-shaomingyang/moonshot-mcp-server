@@ -1,0 +1,21 @@
+# Chinese translations for moonshot_tools package.
+# Copyright (C) 2025 THE moonshot_tools'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the moonshot_tools package.
+# Automatically generated, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: moonshot_tools\n"
+"Report-Msgid-Bugs-To: your@email.com\n"
+"POT-Creation-Date: 2025-05-16 01:55+0000\n"
+"PO-Revision-Date: 2025-05-16 01:55+0000\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /data/moonshot-mcp-server/src/utils/custom_log.py:44
+msgid "{} Log Assistant"
+msgstr ""

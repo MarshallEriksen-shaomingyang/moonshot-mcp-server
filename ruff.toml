@@ -1,0 +1,41 @@
+# 允许的最大行长度
+line-length = 100
+
+# 目标 Python 版本
+target-version = "py312"
+
+# 排除的文件和目录
+exclude = [
+    ".git",
+    ".github",
+    ".pytest_cache",
+    ".vscode",
+    ".venv",
+    "__pycache__",
+    "build",
+    "dist",
+    "python_example",
+]
+
+[lint]
+# 启用的规则集
+select = [
+    "E",   # pycodestyle 错误
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+]
+
+# 忽略的规则
+ignore = [
+    "F403",    # 忽略 'from module import *' 使用的警告
+    "F405",    # 忽略 'name may be undefined, or defined from star imports' 警告
+]
+
+# 自动修复
+fixable = ["ALL"]
+
+# 不自动修复
+unfixable = []

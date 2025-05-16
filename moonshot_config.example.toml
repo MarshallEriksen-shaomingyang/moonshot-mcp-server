@@ -1,0 +1,88 @@
+# Moonshot 服务器配置文件
+# 具体配置信息请查看
+# For detailed configuration information, please refer to the documentation.
+# https://gofastmcp.com/clients/transports#stdio-transports
+
+# Server base configuration [server]
+[server]
+# Server name
+name = "Moonshot MCP Server"
+# Server version
+version = "1.0.0"
+# Server port
+port = 8000
+# Server host
+host = "127.0.0.1"
+
+
+# MCP 子服务器配置 [mcpServers]，每个子服务器配置都需要指定唯一的名称（如 `[mcpServers.server_name]`）和必填的 `prefix` 字段用于API路由。
+# MCP sub-server configuration [mcpServers], each sub-server configuration must specify a unique name (such as [mcpServers.server_name]) and a required `prefix` field for API routing.
+
+[mcpServers]
+
+# HTTP/HTTPS 服务器示例
+# [mcpServers.mcp_calculate_server]
+# # 服务器类型：支持 "process"、"http"、"https"、"websocket"、"uvx"、"npx"
+# type = "https"
+# # 服务器URL地址
+# url = "https://example.com/mcp/sse"
+# # API路由前缀，必填
+# prefix = "calc"
+
+# Python 进程服务器示例
+# 前往 https://www.seniverse.com/ 注册账号获取API密钥
+# [mcpServers.mcp_weather_server]
+# 服务器类型：进程方式启动
+# type = "process"
+# Python解释器命令
+# command = "python3.12"
+# 脚本路径
+# script_path = "python_example/mcp_weather_server.py"
+# 启动参数列表
+# args = []
+# API路由前缀，必填项
+# prefix = "dc"
+# 排除的命令列表
+# exclude = []
+# 工作目录
+# cwd = "/data/moonshot_tools"
+
+# 环境变量配置
+# [mcpServers.mcp_weather_server.env]
+# WEATHER_API_KEY="your_api_key"
+
+# WebSocket服务器示例
+# [mcpServers.ws_server]
+# type = "websocket"
+# url = "ws://localhost:8080"
+# prefix = "ws"
+
+# NPX服务器示例
+# [mcpServers.npm_server]
+# type = "npx"
+# # NPM包名
+# package = "your-package"
+# # 启动参数
+# args = ["--port", "3000"]
+# prefix = "npm"
+
+#[mcpServers.tavily-mcp]
+#type = "npx"
+#package = "tavily-mcp@0.1.4"
+#prefix = "tavily"
+
+#[mcpServers.tavily-mcp.env]
+#TAVILY_API_KEY="your TAVILY_API_KEY"
+
+# UVX服务器示例
+# [mcpServers.uvx_server]
+# type = "uvx"
+# # 工具名称
+# tool_name = "your-tool"
+# # 包名称
+# from_package = "package-name"
+# # 依赖包列表
+# with_packages = ["dep1", "dep2"]
+# # 工具参数
+# tool_args = ["--config", "config.json"]
+# prefix = "uvx"
