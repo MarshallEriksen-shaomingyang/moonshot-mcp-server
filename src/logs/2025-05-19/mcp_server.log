@@ -1,0 +1,339 @@
+2025-05-19 08:21:58,330 - AlphaCore Log Assistant - INFO - Validated config successfully
+2025-05-19 08:21:58,613 - AlphaCore Log Assistant - INFO - MCP server is running,press Ctrl+C stop
+2025-05-19 08:21:58,613 - AlphaCore Log Assistant - INFO - name: desktop-commander, config: {'type': 'npx', 'prefix': 'dco', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': None, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': '@wonderwhy-er/desktop-commander', 'project_directory': None, 'python_version': None}
+2025-05-19 08:21:58,614 - AlphaCore Log Assistant - INFO - Connected server 'desktop-commander' successfully
+2025-05-19 08:22:05,497 - AlphaCore Log Assistant - INFO - name: tavily-mcp, config: {'type': 'npx', 'prefix': 'tavily', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': {'TAVILY_API_KEY': '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'}, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': 'tavily-mcp@0.1.4', 'project_directory': None, 'python_version': None}
+2025-05-19 08:22:05,498 - AlphaCore Log Assistant - INFO - Connected server 'tavily-mcp' successfully
+2025-05-19 08:22:12,455 - AlphaCore Log Assistant - INFO - name: mcp_weather_server, config: {'type': 'process', 'prefix': 'dc', 'url': None, 'command': 'python3.12', 'script_path': 'python_example/mcp_weather_server.py', 'args': [], 'env': {'WEATHER_API_KEY': 'SVXr1sUtuINr_TQlJ'}, 'cwd': '/data/moonshot_tools', 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': None, 'project_directory': None, 'python_version': None}
+2025-05-19 08:22:12,455 - AlphaCore Log Assistant - INFO - Connected server 'mcp_weather_server' successfully
+2025-05-19 08:22:16,444 - AlphaCore Log Assistant - INFO - name: context7, config: {'type': 'npx', 'prefix': 'ctx7', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': None, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': '@upstash/context7-mcp@latest', 'project_directory': None, 'python_version': None}
+2025-05-19 08:22:16,445 - AlphaCore Log Assistant - INFO - Connected server 'context7' successfully
+2025-05-19 08:22:17,108 - AlphaCore Log Assistant - INFO - Config file changed, restarting server...
+2025-05-19 08:22:17,116 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:22:17,116 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:22:17,122 - AlphaCore Log Assistant - INFO - name: desktop-commander, config: {'type': 'npx', 'package': '@wonderwhy-er/desktop-commander', 'prefix': 'dco'}
+2025-05-19 08:22:17,123 - AlphaCore Log Assistant - INFO - Connected server 'desktop-commander' successfully
+2025-05-19 08:22:25,112 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:22:25,112 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:22:25,160 - AlphaCore Log Assistant - ERROR - Failed to create proxy desktop-commander
+Traceback (most recent call last):
+  File "/data/moonshot-mcp-server/src/libs/mcp_server.py", line 91, in create_proxies
+    await self.main_server.import_server(
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/fastmcp/server/server.py", line 1058, in import_server
+    for key, template in (await server.get_resource_templates()).items():
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/fastmcp/server/proxy.py", line 217, in get_resource_templates
+    async with self.client:
+               ^^^^^^^^^^^
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/exceptiongroup/_catch.py", line 65, in handle_exception
+    result = handler(matched)
+             ^^^^^^^^^^^^^^^^
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/fastmcp/utilities/exceptions.py", line 29, in _exception_handler
+    raise leaf
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/fastmcp/client/client.py", line 139, in __aenter__
+    self._session = await stack.enter_async_context(session_cm)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 659, in enter_async_context
+    result = await _enter(cm)
+             ^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 212, in __aenter__
+    raise RuntimeError("generator didn't yield") from None
+RuntimeError: generator didn't yield
+2025-05-19 08:22:25,163 - AlphaCore Log Assistant - INFO - name: tavily-mcp, config: {'type': 'npx', 'package': 'tavily-mcp@0.1.4', 'prefix': 'tavily', 'env': {'TAVILY_API_KEY': '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'}}
+2025-05-19 08:22:25,164 - AlphaCore Log Assistant - INFO - Connected server 'tavily-mcp' successfully
+2025-05-19 08:22:25,189 - AlphaCore Log Assistant - ERROR - Failed to create proxy tavily-mcp
+Traceback (most recent call last):
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 163, in startup
+    server = await loop.create_server(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 1584, in create_server
+    raise OSError(err.errno, msg) from None
+OSError: [Errno 98] error while attempting to bind on address ('0.0.0.0', 8090): [errno 98] address already in use
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+    self.run_forever()
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 1999, in _run_once
+    handle._run()
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/data/moonshot-mcp-server/server.py", line 136, in main
+    await server.main_server.run_http_async()
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/fastmcp/server/server.py", line 773, in run_http_async
+    await server.serve()
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 70, in serve
+    await self._serve(sockets)
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 85, in _serve
+    await self.startup(sockets=sockets)
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 173, in startup
+    sys.exit(1)
+SystemExit: 1
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/moonshot-mcp-server/src/libs/mcp_server.py", line 91, in create_proxies
+    await self.main_server.import_server(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'import_server'
+2025-05-19 08:22:25,191 - AlphaCore Log Assistant - INFO - name: mcp_weather_server, config: {'type': 'process', 'command': 'python3.12', 'script_path': 'python_example/mcp_weather_server.py', 'args': [], 'prefix': 'dc', 'exclude': [], 'cwd': '/data/moonshot_tools', 'env': {'WEATHER_API_KEY': 'SVXr1sUtuINr_TQlJ'}}
+2025-05-19 08:22:25,191 - AlphaCore Log Assistant - INFO - Connected server 'mcp_weather_server' successfully
+2025-05-19 08:22:25,248 - AlphaCore Log Assistant - ERROR - Failed to create proxy mcp_weather_server
+Traceback (most recent call last):
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 163, in startup
+    server = await loop.create_server(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 1584, in create_server
+    raise OSError(err.errno, msg) from None
+OSError: [Errno 98] error while attempting to bind on address ('0.0.0.0', 8090): [errno 98] address already in use
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+    self.run_forever()
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 1999, in _run_once
+    handle._run()
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/data/moonshot-mcp-server/server.py", line 136, in main
+    await server.main_server.run_http_async()
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/fastmcp/server/server.py", line 773, in run_http_async
+    await server.serve()
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 70, in serve
+    await self._serve(sockets)
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 85, in _serve
+    await self.startup(sockets=sockets)
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 173, in startup
+    sys.exit(1)
+SystemExit: 1
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/moonshot-mcp-server/src/libs/mcp_server.py", line 91, in create_proxies
+    await self.main_server.import_server(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'import_server'
+2025-05-19 08:22:25,253 - AlphaCore Log Assistant - INFO - name: context7, config: {'type': 'npx', 'package': '@upstash/context7-mcp@latest', 'prefix': 'ctx7'}
+2025-05-19 08:22:25,255 - AlphaCore Log Assistant - INFO - Connected server 'context7' successfully
+2025-05-19 08:22:25,266 - AlphaCore Log Assistant - ERROR - Failed to create proxy context7
+Traceback (most recent call last):
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 163, in startup
+    server = await loop.create_server(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 1584, in create_server
+    raise OSError(err.errno, msg) from None
+OSError: [Errno 98] error while attempting to bind on address ('0.0.0.0', 8090): [errno 98] address already in use
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+    self.run_forever()
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 1999, in _run_once
+    handle._run()
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/data/moonshot-mcp-server/server.py", line 136, in main
+    await server.main_server.run_http_async()
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/fastmcp/server/server.py", line 773, in run_http_async
+    await server.serve()
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 70, in serve
+    await self._serve(sockets)
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 85, in _serve
+    await self.startup(sockets=sockets)
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 173, in startup
+    sys.exit(1)
+SystemExit: 1
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/moonshot-mcp-server/src/libs/mcp_server.py", line 91, in create_proxies
+    await self.main_server.import_server(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'import_server'
+2025-05-19 08:22:25,270 - AlphaCore Log Assistant - ERROR - Error reloading server
+Traceback (most recent call last):
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 163, in startup
+    server = await loop.create_server(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 1584, in create_server
+    raise OSError(err.errno, msg) from None
+OSError: [Errno 98] error while attempting to bind on address ('0.0.0.0', 8090): [errno 98] address already in use
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+    self.run_forever()
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 1999, in _run_once
+    handle._run()
+  File "/root/.local/share/uv/python/cpython-3.12.10-linux-x86_64-gnu/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/data/moonshot-mcp-server/server.py", line 136, in main
+    await server.main_server.run_http_async()
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/fastmcp/server/server.py", line 773, in run_http_async
+    await server.serve()
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 70, in serve
+    await self._serve(sockets)
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 85, in _serve
+    await self.startup(sockets=sockets)
+  File "/data/moonshot-mcp-server/.venv/lib/python3.12/site-packages/uvicorn/server.py", line 173, in startup
+    sys.exit(1)
+SystemExit: 1
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/data/moonshot-mcp-server/server.py", line 118, in reload_server
+    await server.main_server.run_http_async()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'run_http_async'
+2025-05-19 08:23:45,839 - AlphaCore Log Assistant - INFO - Validated config successfully
+2025-05-19 08:23:46,071 - AlphaCore Log Assistant - INFO - MCP server is running,press Ctrl+C stop
+2025-05-19 08:23:46,071 - AlphaCore Log Assistant - INFO - name: desktop-commander, config: {'type': 'npx', 'prefix': 'dco', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': None, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': '@wonderwhy-er/desktop-commander', 'project_directory': None, 'python_version': None}
+2025-05-19 08:23:46,072 - AlphaCore Log Assistant - INFO - Connected server 'desktop-commander' successfully
+2025-05-19 08:23:51,870 - AlphaCore Log Assistant - INFO - Received signal SIGINT...
+2025-05-19 08:23:51,871 - AlphaCore Log Assistant - INFO - Closing MCP server...
+2025-05-19 08:23:51,871 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:23:51,871 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:23:51,872 - AlphaCore Log Assistant - INFO - MCP server closed successfully
+2025-05-19 08:23:52,023 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:23:52,024 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:23:52,024 - AlphaCore Log Assistant - INFO - Received signal SIGINT...
+2025-05-19 08:23:52,024 - AlphaCore Log Assistant - INFO - Closing MCP server...
+2025-05-19 08:23:52,024 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:23:52,024 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:23:52,792 - AlphaCore Log Assistant - INFO - name: tavily-mcp, config: {'type': 'npx', 'prefix': 'tavily', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': {'TAVILY_API_KEY': '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'}, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': 'tavily-mcp@0.1.4', 'project_directory': None, 'python_version': None}
+2025-05-19 08:23:52,792 - AlphaCore Log Assistant - INFO - Connected server 'tavily-mcp' successfully
+2025-05-19 08:23:58,546 - AlphaCore Log Assistant - INFO - name: mcp_weather_server, config: {'type': 'process', 'prefix': 'dc', 'url': None, 'command': 'python3.12', 'script_path': 'python_example/mcp_weather_server.py', 'args': [], 'env': {'WEATHER_API_KEY': 'SVXr1sUtuINr_TQlJ'}, 'cwd': '/data/moonshot_tools', 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': None, 'project_directory': None, 'python_version': None}
+2025-05-19 08:23:58,547 - AlphaCore Log Assistant - INFO - Connected server 'mcp_weather_server' successfully
+2025-05-19 08:24:02,794 - AlphaCore Log Assistant - INFO - name: context7, config: {'type': 'npx', 'prefix': 'ctx7', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': None, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': '@upstash/context7-mcp@latest', 'project_directory': None, 'python_version': None}
+2025-05-19 08:24:02,795 - AlphaCore Log Assistant - INFO - Connected server 'context7' successfully
+2025-05-19 08:24:08,261 - AlphaCore Log Assistant - INFO - Config file changed, restarting server...
+2025-05-19 08:24:08,261 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:24:08,262 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:24:08,262 - AlphaCore Log Assistant - INFO - Configuration has been updated. Please restart the server manually to apply changes.
+2025-05-19 08:24:08,262 - AlphaCore Log Assistant - INFO - New configuration loaded successfully.
+2025-05-19 08:24:09,144 - AlphaCore Log Assistant - ERROR - Error starting MCP server
+Traceback (most recent call last):
+  File "/data/moonshot-mcp-server/server.py", line 135, in main
+    except Exception:
+              ^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'run_http_async'
+2025-05-19 08:24:09,145 - AlphaCore Log Assistant - INFO - Closing MCP server...
+2025-05-19 08:24:09,145 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:24:09,145 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:24:09,145 - AlphaCore Log Assistant - INFO - MCP server closed successfully
+2025-05-19 08:24:09,146 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:24:09,146 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:27:44,022 - AlphaCore Log Assistant - INFO - Validated config successfully
+2025-05-19 08:27:44,258 - AlphaCore Log Assistant - INFO - MCP server is running,press Ctrl+C stop
+2025-05-19 08:27:44,258 - AlphaCore Log Assistant - INFO - name: desktop-commander, config: {'type': 'npx', 'prefix': 'dco', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': None, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': '@wonderwhy-er/desktop-commander', 'project_directory': None, 'python_version': None}
+2025-05-19 08:27:44,259 - AlphaCore Log Assistant - INFO - Connected server 'desktop-commander' successfully
+2025-05-19 08:27:51,329 - AlphaCore Log Assistant - INFO - name: tavily-mcp, config: {'type': 'npx', 'prefix': 'tavily', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': {'TAVILY_API_KEY': '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'}, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': 'tavily-mcp@0.1.4', 'project_directory': None, 'python_version': None}
+2025-05-19 08:27:51,329 - AlphaCore Log Assistant - INFO - Connected server 'tavily-mcp' successfully
+2025-05-19 08:27:56,753 - AlphaCore Log Assistant - INFO - name: mcp_weather_server, config: {'type': 'process', 'prefix': 'dc', 'url': None, 'command': 'python3.12', 'script_path': 'python_example/mcp_weather_server.py', 'args': [], 'env': {'WEATHER_API_KEY': 'SVXr1sUtuINr_TQlJ'}, 'cwd': '/data/moonshot_tools', 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': None, 'project_directory': None, 'python_version': None}
+2025-05-19 08:27:56,753 - AlphaCore Log Assistant - INFO - Connected server 'mcp_weather_server' successfully
+2025-05-19 08:28:00,316 - AlphaCore Log Assistant - INFO - Config file changed, restarting server...
+2025-05-19 08:28:00,317 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:28:00,317 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:28:00,317 - AlphaCore Log Assistant - INFO - Validated new config successfully
+2025-05-19 08:28:00,330 - AlphaCore Log Assistant - INFO - Restarting server with new configuration...
+2025-05-19 08:28:00,330 - AlphaCore Log Assistant - INFO - name: desktop-commander, config: {'type': 'npx', 'prefix': 'dco', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': None, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': '@wonderwhy-er/desktop-commander', 'project_directory': None, 'python_version': None}
+2025-05-19 08:28:00,331 - AlphaCore Log Assistant - INFO - Connected server 'desktop-commander' successfully
+2025-05-19 08:28:00,780 - AlphaCore Log Assistant - INFO - name: context7, config: {'type': 'npx', 'prefix': 'ctx7', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': None, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': '@upstash/context7-mcp@latest', 'project_directory': None, 'python_version': None}
+2025-05-19 08:28:00,780 - AlphaCore Log Assistant - INFO - Connected server 'context7' successfully
+2025-05-19 08:28:00,785 - AlphaCore Log Assistant - ERROR - Failed to create proxy context7
+Traceback (most recent call last):
+  File "/data/moonshot-mcp-server/src/libs/mcp_server.py", line 91, in create_proxies
+    await self.main_server.import_server(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'import_server'
+2025-05-19 08:28:07,636 - AlphaCore Log Assistant - INFO - name: tavily-mcp, config: {'type': 'npx', 'prefix': 'tavily', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': {'TAVILY_API_KEY': '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'}, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': 'tavily-mcp@0.1.4', 'project_directory': None, 'python_version': None}
+2025-05-19 08:28:07,637 - AlphaCore Log Assistant - INFO - Connected server 'tavily-mcp' successfully
+2025-05-19 08:28:13,364 - AlphaCore Log Assistant - INFO - name: mcp_weather_server, config: {'type': 'process', 'prefix': 'dc', 'url': None, 'command': 'python3.12', 'script_path': 'python_example/mcp_weather_server.py', 'args': [], 'env': {'WEATHER_API_KEY': 'SVXr1sUtuINr_TQlJ'}, 'cwd': '/data/moonshot_tools', 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': None, 'project_directory': None, 'python_version': None}
+2025-05-19 08:28:13,364 - AlphaCore Log Assistant - INFO - Connected server 'mcp_weather_server' successfully
+2025-05-19 08:28:16,837 - AlphaCore Log Assistant - INFO - name: context7, config: {'type': 'npx', 'prefix': 'ctx7', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': None, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': '@upstash/context7-mcp@latest', 'project_directory': None, 'python_version': None}
+2025-05-19 08:28:16,841 - AlphaCore Log Assistant - INFO - Connected server 'context7' successfully
+2025-05-19 08:28:23,463 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:28:23,469 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:29:25,718 - AlphaCore Log Assistant - INFO - Validated config successfully
+2025-05-19 08:29:25,945 - AlphaCore Log Assistant - INFO - MCP server is running,press Ctrl+C stop
+2025-05-19 08:29:25,945 - AlphaCore Log Assistant - INFO - name: desktop-commander, config: {'type': 'npx', 'prefix': 'dco', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': None, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': '@wonderwhy-er/desktop-commander', 'project_directory': None, 'python_version': None}
+2025-05-19 08:29:25,946 - AlphaCore Log Assistant - INFO - Connected server 'desktop-commander' successfully
+2025-05-19 08:29:31,946 - AlphaCore Log Assistant - INFO - name: tavily-mcp, config: {'type': 'npx', 'prefix': 'tavily', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': {'TAVILY_API_KEY': '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'}, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': 'tavily-mcp@0.1.4', 'project_directory': None, 'python_version': None}
+2025-05-19 08:29:31,946 - AlphaCore Log Assistant - INFO - Connected server 'tavily-mcp' successfully
+2025-05-19 08:29:37,351 - AlphaCore Log Assistant - INFO - name: mcp_weather_server, config: {'type': 'process', 'prefix': 'dc', 'url': None, 'command': 'python3.12', 'script_path': 'python_example/mcp_weather_server.py', 'args': [], 'env': {'WEATHER_API_KEY': 'SVXr1sUtuINr_TQlJ'}, 'cwd': '/data/moonshot_tools', 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': None, 'project_directory': None, 'python_version': None}
+2025-05-19 08:29:37,351 - AlphaCore Log Assistant - INFO - Connected server 'mcp_weather_server' successfully
+2025-05-19 08:29:40,424 - AlphaCore Log Assistant - INFO - Config file changed, restarting server...
+2025-05-19 08:29:40,425 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:29:40,425 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:29:40,426 - AlphaCore Log Assistant - INFO - Validated new config successfully
+2025-05-19 08:29:40,434 - AlphaCore Log Assistant - INFO - Configuration updated successfully. Please restart the server manually to apply changes.
+2025-05-19 08:29:40,434 - AlphaCore Log Assistant - INFO - name: desktop-commander, config: {'type': 'npx', 'prefix': 'dco', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': None, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': '@wonderwhy-er/desktop-commander', 'project_directory': None, 'python_version': None}
+2025-05-19 08:29:40,434 - AlphaCore Log Assistant - INFO - Connected server 'desktop-commander' successfully
+2025-05-19 08:29:40,610 - AlphaCore Log Assistant - INFO - name: context7, config: {'type': 'npx', 'prefix': 'ctx7', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': None, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': '@upstash/context7-mcp@latest', 'project_directory': None, 'python_version': None}
+2025-05-19 08:29:40,610 - AlphaCore Log Assistant - INFO - Connected server 'context7' successfully
+2025-05-19 08:29:40,614 - AlphaCore Log Assistant - ERROR - Failed to create proxy context7
+Traceback (most recent call last):
+  File "/data/moonshot-mcp-server/src/libs/mcp_server.py", line 91, in create_proxies
+    await self.main_server.import_server(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'import_server'
+2025-05-19 08:29:46,790 - AlphaCore Log Assistant - INFO - name: tavily-mcp, config: {'type': 'npx', 'prefix': 'tavily', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': {'TAVILY_API_KEY': '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'}, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': 'tavily-mcp@0.1.4', 'project_directory': None, 'python_version': None}
+2025-05-19 08:29:46,790 - AlphaCore Log Assistant - INFO - Connected server 'tavily-mcp' successfully
+2025-05-19 08:29:52,167 - AlphaCore Log Assistant - INFO - name: mcp_weather_server, config: {'type': 'process', 'prefix': 'dc', 'url': None, 'command': 'python3.12', 'script_path': 'python_example/mcp_weather_server.py', 'args': [], 'env': {'WEATHER_API_KEY': 'SVXr1sUtuINr_TQlJ'}, 'cwd': '/data/moonshot_tools', 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': None, 'project_directory': None, 'python_version': None}
+2025-05-19 08:29:52,167 - AlphaCore Log Assistant - INFO - Connected server 'mcp_weather_server' successfully
+2025-05-19 08:29:55,533 - AlphaCore Log Assistant - INFO - name: context7, config: {'type': 'npx', 'prefix': 'ctx7', 'url': None, 'command': None, 'script_path': None, 'args': [], 'env': None, 'cwd': None, 'retry': 1, 'whiteLists': None, 'exclude': [], 'headers': {}, 'tool_name': None, 'from_package': '', 'with_packages': [], 'package': '@upstash/context7-mcp@latest', 'project_directory': None, 'python_version': None}
+2025-05-19 08:29:55,533 - AlphaCore Log Assistant - INFO - Connected server 'context7' successfully
+2025-05-19 08:30:34,359 - AlphaCore Log Assistant - INFO - Received signal SIGINT...
+2025-05-19 08:30:34,360 - AlphaCore Log Assistant - INFO - Closing MCP server...
+2025-05-19 08:30:34,360 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:30:34,360 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:30:34,361 - AlphaCore Log Assistant - INFO - MCP server closed successfully
+2025-05-19 08:30:34,533 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:30:34,535 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:30:34,536 - AlphaCore Log Assistant - INFO - Received signal SIGINT...
+2025-05-19 08:30:34,537 - AlphaCore Log Assistant - INFO - Closing MCP server...
+2025-05-19 08:30:34,537 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:30:34,538 - AlphaCore Log Assistant - INFO - MCP server stopped successfully
+2025-05-19 08:30:34,539 - AlphaCore Log Assistant - INFO - Shutdown was cancelled, continuing shutdown process
+2025-05-19 08:30:34,539 - AlphaCore Log Assistant - INFO - Stopping MCP server...
+2025-05-19 08:30:34,539 - AlphaCore Log Assistant - INFO - MCP server stopped successfully

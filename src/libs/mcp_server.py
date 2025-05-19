@@ -1,36 +1,39 @@
 import asyncio
+import logging
 from typing import Any
 
 from fastapi import FastAPI
-from fastmcp import Client, FastMCP
-from fastmcp.client.transports import (
-    NodeStdioTransport,
-    NpxStdioTransport,
-    PythonStdioTransport,
-    SSETransport,
-    UvxStdioTransport,
-    WSTransport,
-)
+from fastmcp import Client
+from fastmcp import FastMCP
+from fastmcp.client.transports import NodeStdioTransport
+from fastmcp.client.transports import NpxStdioTransport
+from fastmcp.client.transports import PythonStdioTransport
+from fastmcp.client.transports import SSETransport
+from fastmcp.client.transports import UvxStdioTransport
+from fastmcp.client.transports import WSTransport
 
-from src.models.config_model import ProxyConfig, ServerConfig
-from src.utils.custom_log import create_logger
+from src.models.config_model import ProxyConfig
+from src.models.config_model import ServerConfig
 
 
 class McpServer:
     """MCP server aggregator class."""
 
-    def __init__(self, server_config: ServerConfig, proxy_config: ProxyConfig):
+    def __init__(self, server_config: ServerConfig, proxy_config: ProxyConfig) -> None:
+        """Initialize the MCP server."""
         self.server_config: ServerConfig = server_config
         self.proxy_config: ProxyConfig = proxy_config
         self.main_server: FastMCP | None = None
         self.clients: list[Client] = []
         self._tasks: list[asyncio.Task] = []
-        self._logger = None
+        self._logger: logging.Logger | None = None
+        self.is_shutting_down: bool = False
 
     @classmethod
-    async def create(cls, server_config: ServerConfig, proxy_config: ProxyConfig):
+    async def create(cls, server_config: ServerConfig, proxy_config: ProxyConfig, logger: logging.Logger) -> None:
+        """Create a new instance of the MCP server."""
         instance = cls(server_config, proxy_config)
-        instance._logger = await create_logger("mcp_server")
+        instance._logger = logger
         app = FastAPI()
         instance.main_server = FastMCP.from_fastapi(
             app=app,
@@ -65,35 +68,42 @@ class McpServer:
                 self.main_server = None
 
             self._logger.info("MCP server stopped successfully")
-        except Exception as e:
-            self._logger.error(f"Failed to stop server: {str(e)}")
+        except Exception:
+            self._logger.exception("Failed to stop server")
 
-    async def _create_proxies(self) -> None:
+    async def create_proxies(self) -> None:
         """Create proxy servers based on configuration."""
         if not self.proxy_config:
             self._logger.info("No proxy configurations found, skipping proxy creation")
             return
         for name, config in self.proxy_config.items():
-            self._logger.info(f"name: {name}, config: {config}")
+            if not config:
+                self._logger.warning("Proxy configuration for %s is empty, skipping", name)
+                continue
+            if not config.get("prefix"):
+                self._logger.error("Proxy configuration for %s is missing prefix, skipping", name)
+                continue
+            self._logger.info("name: %s, config: %s", name, str(config))
             try:
                 client = await self._create_proxy(name, config)
                 proxy_route = FastMCP.from_client(client, name=name)
                 if client:
                     await self.main_server.import_server(
-                        server=proxy_route, prefix=config.get("prefix", "")
+                        server=proxy_route,
+                        prefix=config.get("prefix", ""),
                     )
                     self.clients.append(client)
-            except Exception as e:
+            except Exception:
                 import traceback
 
                 traceback.print_exc()
-                self._logger.error(f"Failed to create proxy {name}: {str(e)}")
+                self._logger.exception("Failed to create proxy %s", name)
 
     async def _create_proxy(self, name: str, config: dict[str, Any]) -> Client | None:
         """Create a single proxy server."""
         mcp_type = config.get("type")
         if not mcp_type:
-            self._logger.error(f"{name}: Proxy type not specified")
+            self._logger.error("%s: Proxy type not specified", name)
             return None
 
         transport_creators = {
@@ -107,7 +117,7 @@ class McpServer:
 
         creator = transport_creators.get(mcp_type)
         if not creator:
-            self._logger.error(f"Unknown proxy type: {mcp_type}")
+            self._logger.error("Unknown proxy type: %s", mcp_type)
             return None
 
         transport = await creator(name, config)
@@ -117,40 +127,40 @@ class McpServer:
         return await self._setup_proxy(name, config, transport)
 
     async def _setup_proxy(
-        self, name: str, config: dict[str, Any], transport: Any
+        self,
+        name: str,
+        config: dict[str, Any],
+        transport: Any,  # noqa: ANN401
     ) -> Client | None:
         """Set up a proxy server with retry mechanism."""
         retry_count = config.get("retry", 1)
-        # roots = config.get("whiteLists", [])
-
         for attempt in range(retry_count):
             try:
                 client = Client(transport=transport)
-                self._logger.info(f"Connected server '{name}' successfully")
-                return client
+                self._logger.info("Connected server '%s' successfully", name)
             except TimeoutError:
-                self._logger.warning("Timeout connecting server '{name}' (try {}/{})").format(
-                    name, attempt + 1, retry_count
-                )
+                self._logger.warning("Timeout connecting server '%s' (try %d/%d)", name, attempt + 1, retry_count)
 
-            except Exception as e:
-                self._logger.error(f"Failed to connect server '{name}': {str(e)}")
-
+            except Exception:
+                self._logger.exception("Failed to connect server '%s'", name)
+            return client
         return None
 
     async def _create_process_transport(
-        self, name: str, config: dict[str, Any]
+        self,
+        name: str,
+        config: dict[str, Any],
     ) -> PythonStdioTransport | NodeStdioTransport | None:
         """Create process transport for Python or Node.js scripts."""
         script_path = config.get("script_path")
         if not script_path:
-            self._logger.error(f"{name}: Script path not found")
+            self._logger.error("%s: Script path not found", name)
             return None
 
         is_python = script_path.endswith(".py")
         is_js = script_path.endswith(".js")
         if not (is_python or is_js):
-            self._logger.error(f"{name}: Unsupported script type")
+            self._logger.error("%s: Unsupported script type", name)
             return None
 
         try:
@@ -162,16 +172,15 @@ class McpServer:
                     env=config.get("env"),
                     cwd=config.get("cwd"),
                 )
-            else:
-                return NodeStdioTransport(
-                    node_cmd=config.get("command", ""),
-                    script_path=script_path,
-                    args=config.get("args", []),
-                    env=config.get("env"),
-                    cwd=config.get("cwd"),
-                )
-        except Exception as e:
-            self._logger.error(f"Error creating process transport for '{name}': {str(e)}")
+            return NodeStdioTransport(
+                node_cmd=config.get("command", ""),
+                script_path=script_path,
+                args=config.get("args", []),
+                env=config.get("env"),
+                cwd=config.get("cwd"),
+            )
+        except Exception:
+            self._logger.exception("Error creating process transport for '%s'", name)
 
             return None
 
@@ -179,7 +188,7 @@ class McpServer:
         """Create SSE transport."""
         url = config.get("url")
         if not url:
-            self._logger.error(f"{name}: URL not found")
+            self._logger.error("%s: URL not found", name)
             return None
         return SSETransport(url, headers=config.get("headers", {}))
 
@@ -187,40 +196,44 @@ class McpServer:
         """Create WebSocket transport."""
         url = config.get("url")
         if not url:
-            self._logger.error(f"{name}: URL not found")
+            self._logger.error("%s: URL not found", name)
             return None
         return WSTransport(url)
 
     async def _create_uvx_transport(
-        self, name: str, config: dict[str, Any]
+        self,
+        name: str,
+        config: dict[str, Any],
     ) -> UvxStdioTransport | None:
         """Create UVX transport."""
         tool_name = config.get("tool_name")
         if not tool_name:
-            self._logger.error(f"{name}: Tool name not found")
+            self._logger.error("%s: Tool name not found", name)
             return None
         return UvxStdioTransport(
             tool_name=tool_name,
             from_package=config.get("from_package", ""),
             with_packages=config.get("with_packages", []),
             tool_args=config.get("args", []),
-            env_vars=config.get("env", None),
-            project_directory=config.get("project_directory", None),
-            python_version=config.get("python_version", None),
+            env_vars=config.get("env"),
+            project_directory=config.get("project_directory"),
+            python_version=config.get("python_version"),
         )
 
     async def _create_npx_transport(
-        self, name: str, config: dict[str, Any]
+        self,
+        name: str,
+        config: dict[str, Any],
     ) -> NpxStdioTransport | None:
         """Create NPX transport."""
         package = config.get("package")
         if not package:
-            self._logger.error(f"{name}: Package not found")
+            self._logger.error("%s: Package not found", name)
             return None
         return NpxStdioTransport(
             package=package,
             args=config.get("args", []),
-            project_directory=config.get("project_directory", None),
-            env_vars=config.get("env", None),
+            project_directory=config.get("project_directory"),
+            env_vars=config.get("env"),
             use_package_lock=config.get("use_package_lock", True),
         )

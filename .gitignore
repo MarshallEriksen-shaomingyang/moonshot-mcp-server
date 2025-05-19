@@ -6,6 +6,7 @@ wheels/
 *.egg
 *.egg-info
 *.whl
+workplace/
 
 moonshot_config.toml
 .venv
