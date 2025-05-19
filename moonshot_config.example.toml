@@ -45,7 +45,7 @@ host = "127.0.0.1"
 # 排除的命令列表
 # exclude = []
 # 工作目录
-# cwd = "/data/moonshot_tools"
+# cwd = "/app"
 
 # 环境变量配置
 # [mcpServers.mcp_weather_server.env]

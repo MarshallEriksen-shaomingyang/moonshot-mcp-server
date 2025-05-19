@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: moonshot-mcp-server
+    ports:
+      # 和 配置文件 moonshot_config server.port 保持一致
+      - "8090:8090"
+    volumes:
+      - ./moonshot_config.toml:/app/moonshot_config.toml
+      - ./src:/app/src
+      - ./.env:/app/.env
+      - ./logs:/app/logs
+    environment:
+      - LANG=zh_CN
+      - ASSISTANT_NAME=AlphaCore
+    restart: unless-stopped
+    # If you need to connect to other services, add them here
+    # For example:
+    # depends_on:
+    #   - another-service
+    # networks:
+    #   - mcp-network
+
+# If you need to define custom networks
+# networks:
+#   mcp-network:
+#     driver: bridge
