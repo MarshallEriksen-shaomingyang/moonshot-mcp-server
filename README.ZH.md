@@ -80,7 +80,7 @@ MCP支持多种类型的服务器配置，每个子服务器配置都需要指�
 | 配置项 | 说明 | 必填 |
 |--------|------|------|
 | tool_name | 工具名称 | 是 |
-| from_package | 包名称 | 是 |
+| from_package | 包名称 | 否 |
 | with_packages | 依赖包列表 | 否 |
 | args | 工具参数 | 否 |
 | prefix | API路由前缀 | 是 |

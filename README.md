@@ -79,7 +79,7 @@ MCP supports multiple types of server configurations. Each sub-server configurat
 | Config Item | Description | Required |
 |-------------|-------------|----------|
 | tool_name | Tool name | Yes |
-| from_package | Package name | Yes |
+| from_package | Package name | No |
 | with_packages | Dependency package list | No |
 | args | Tool parameters | No |
 | prefix | API routing prefix | Yes |
