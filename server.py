@@ -1,10 +1,12 @@
 """Moonshot MCP Server."""
 
+import argparse
 import asyncio
 import logging
 import signal
 import sys
 from typing import Any
+from typing import Literal
 
 from src.libs.i18n import i18n
 from src.libs.mcp_config_loader import MCPConfigLoader
@@ -96,8 +98,25 @@ async def setup_server(
     return server
 
 
+def parse_args() -> Literal["http", "sse"]:
+    """Parse command line arguments."""
+    parser = argparse.ArgumentParser(description="Moonshot MCP Server")
+    parser.add_argument(
+        "--mode",
+        type=str,
+        choices=["http", "sse"],
+        default="http",
+        help="Server mode: http (default) or sse",
+    )
+    args = parser.parse_args()
+    return args.mode
+
+
 async def main() -> None:
     """运行 MCP 服务器."""
+    # 解析命令行参数
+    server_mode = parse_args()
+
     logger, config, main_config = await setup_config()
     server = None  # Initialize server variable
 
@@ -105,6 +124,7 @@ async def main() -> None:
         """Reload the server when the config file changes."""
         nonlocal server
         logger.info("Config file changed, restarting server...")
+        # 使用与主服务器相同的模式
 
         # 停止当前服务器
         if server is not None:
@@ -156,8 +176,12 @@ async def main() -> None:
         # 创建代理并运行服务器
         await server.create_proxies()
 
-        # 运行HTTP服务器
-        await server.main_server.run_http_async()
+        # 根据命令行参数选择服务器模式
+        logger.info("Starting server in %s mode", server_mode)
+        if server_mode == "http":
+            await server.main_server.run_http_async()
+        else:  # server_mode == "sse"
+            await server.main_server.run_sse_async()
 
     except Exception:
         logger.exception("Error starting MCP server")

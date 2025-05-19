@@ -16,7 +16,7 @@ uv venv
 # Activate virtual environment
 source .venv/bin/activate
 # Start the project
-uv run server.py
+uv run server.py --mode http or uv run server.py --mode sse
 ```
 
 ## ⚙️📋 MCP Configuration Details (moonshot_config.toml)

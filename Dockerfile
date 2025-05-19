@@ -35,4 +35,4 @@ RUN if [ ! -f .env ]; then cp .env.example .env; fi && \
 EXPOSE 8090
 
 # Command to run the application
-CMD ["uv", "run", "server.py"]
+CMD ["uv", "run", "server.py", "--mode", "sse"]

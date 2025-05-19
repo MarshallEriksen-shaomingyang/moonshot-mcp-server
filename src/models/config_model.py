@@ -12,7 +12,7 @@ class ErrorMessages:
 
 class ServerConfig(BaseModel):
     host: str = "127.0.0.1"
-    port: int = "8000"
+    port: int = "8090"
     name: str
     version: str = "1.0.0"
 
